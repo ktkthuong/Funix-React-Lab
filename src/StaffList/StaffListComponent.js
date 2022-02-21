@@ -7,20 +7,20 @@ class Menu extends Component {
         super(props);
 
         this.state = {
-            selectedDish: null
+            selectedStaff: null
         }
     }
-    onDishSelect(dish){
-        this.setState({ selectedDish:dish});
+    onStaffSelect(staff){
+        this.setState({ selectedStaff:staff});
     }
-    renderDish(dish) {
-        if(dish!=null){
+    renderStaff(staff) {
+        if(staff!=null){
             return(
                 <Card>
-                   <CardImg width="100%" src={dish.image} alt={dish.name} />
+                  
                    <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
+                        <CardTitle>{staff.name}</CardTitle>
+                        
                     </CardBody> 
                 </Card>
             );
@@ -34,17 +34,17 @@ class Menu extends Component {
 
 
     render(){
-        const menu = this.props.staffs.map((dish) => {
+        const menu = this.props.staffs.map((staff) => {
             return (
-                <div key={dish.id} className="col-12 col-md-5 m-1">
-                    <Card onClick={() => this.onDishSelect(dish)}>
+                <div key={staff.id} className="col-12 col-md-5 m-1">
+                    <Card onClick={() => this.onStaffSelect(staff)}>
                         
-                        <CardImg width="100%" src={dish.image} alt={dish.name} />
+                       
                         
-                        <CardImgOverlay>
-                            <CardTitle>{dish.name}</CardTitle>
+                        <CardBody>
+                            <CardTitle>{staff.name}</CardTitle>
                             
-                        </CardImgOverlay>
+                        </CardBody>
                     </Card>
                 </div>
             );
@@ -59,7 +59,7 @@ class Menu extends Component {
                     
                 </div>
                 <div className='row'>
-                    {this.renderDish(this.state.selectedDish)}
+                    {this.renderStaff(this.state.selectedStaff)}
                 </div>
             </div>
         );
