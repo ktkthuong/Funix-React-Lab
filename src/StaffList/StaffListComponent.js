@@ -19,7 +19,13 @@ class Menu extends Component {
                 <Card>
                   
                    <CardBody>
-                        <CardTitle>{staff.name}</CardTitle>
+                        <CardTitle><p>Họ và tên:</p>{staff.name}</CardTitle>
+                        <CardTitle><p>Ngày sinh:</p>{staff.doB}</CardTitle>
+                        <CardTitle><p>Ngày vào công ty:</p>{staff.startDate}</CardTitle>
+                        <CardTitle><p>Phòng ban:</p>{staff.department.name}</CardTitle>
+                        <CardTitle><p>Số ngày nghỉ còn lại:</p>{staff.annualLeave}</CardTitle>
+                        <CardTitle><p>Số ngày đã làm thêm:</p>{staff.overTime}</CardTitle>
+                        
                         
                     </CardBody> 
                 </Card>
@@ -36,7 +42,7 @@ class Menu extends Component {
     render(){
         const menu = this.props.staffs.map((staff) => {
             return (
-                <div key={staff.id} className="col-12 col-md-5 m-1">
+                <div key={staff.id} className="col-12 col-sm-6 col-md-4">
                     <Card onClick={() => this.onStaffSelect(staff)}>
                         
                        
