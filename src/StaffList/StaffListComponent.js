@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from "reactstrap";
+import dateformat, {masks} from "dateformat";
+const now = new Date();
 class Menu extends Component {
     constructor(props){
         super(props);
