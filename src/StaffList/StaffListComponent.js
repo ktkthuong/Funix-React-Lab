@@ -1,15 +1,23 @@
 import React, {Component} from "react";
-import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from "reactstrap";
-import dateformat, {masks} from "dateformat";
+import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Button} from "reactstrap";
+import dateFormat from "dateformat";
 const now = new Date();
 class Menu extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            selectedStaff: null
+            selectedStaff: null,
+            click: false
         }
+        this.handleToggle=this.handleToggle.bind(this);
     }
+
+    handleToggle(){
+        this.setState({click: !this.state.click})
+    }
+
+
     onStaffSelect(staff){
         this.setState({ selectedStaff:staff});
     }
@@ -19,12 +27,12 @@ class Menu extends Component {
                 <Card>
                   
                    <CardBody>
-                        <CardTitle><p>Họ và tên:</p>{staff.name}</CardTitle>
-                        <CardTitle><p>Ngày sinh:</p>{staff.doB}</CardTitle>
-                        <CardTitle><p>Ngày vào công ty:</p>{staff.startDate}</CardTitle>
-                        <CardTitle><p>Phòng ban:</p>{staff.department.name}</CardTitle>
-                        <CardTitle><p>Số ngày nghỉ còn lại:</p>{staff.annualLeave}</CardTitle>
-                        <CardTitle><p>Số ngày đã làm thêm:</p>{staff.overTime}</CardTitle>
+                        <CardTitle>Họ và tên: {staff.name}</CardTitle>
+                        <CardTitle>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</CardTitle>
+                        <CardTitle>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</CardTitle>
+                        <CardTitle>Phòng ban: {staff.department.name}</CardTitle>
+                        <CardTitle>Số ngày nghỉ còn lại: {staff.annualLeave}</CardTitle>
+                        <CardTitle>Số ngày đã làm thêm: {staff.overTime}</CardTitle>
                         
                         
                     </CardBody> 
@@ -37,12 +45,17 @@ class Menu extends Component {
             )
         }
     }
+    handleToggle(){
+        this.setState({
+            click: !this.state.click
+        })
+    }
 
 
     render(){
         const menu = this.props.staffs.map((staff) => {
             return (
-                <div key={staff.id} className="col-12 col-sm-6 col-md-4">
+                <div key={staff.id} className={this.state.click ? "col-12 col-sm-6 col-md-4" : "col-6 col-sm-4 col-md-2 mt-3"}>
                     <Card onClick={() => this.onStaffSelect(staff)}>
                         
                        
@@ -64,8 +77,14 @@ class Menu extends Component {
                         {menu}
                     
                 </div>
+                <div className="my-2">
+                    <p>Bấm vào tên nhân viên để xem chi tiết.</p>
+                </div>
+                <Button onClick={this.handleToggle}>Thay đổi giao diện</Button>
                 <div className='row'>
-                    {this.renderStaff(this.state.selectedStaff)}
+                    <div className="col-12 col-md-5 mt-3">
+                        {this.renderStaff(this.state.selectedStaff)}
+                    </div>
                 </div>
             </div>
         );
