@@ -56,6 +56,7 @@ class Menu extends Component {
         const menu = this.props.staffs.map((staff) => {
             return (
                 <div key={staff.id} className={this.state.click ? "col-12 col-sm-6 col-md-4" : "col-6 col-sm-4 col-md-2 mt-3"}>
+                    {/*Chuyển từ kiểu màn hình ban đầu sang kiểu màn hình khác*/}
                     <Card onClick={() => this.onStaffSelect(staff)}>
                         
                        
