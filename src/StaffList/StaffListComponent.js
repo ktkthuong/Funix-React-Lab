@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Button} from "reactstrap";
 import dateFormat from "dateformat";
 const now = new Date();
-class Menu extends Component {
+class StaffList extends Component {
     constructor(props){
         super(props);
 
@@ -53,7 +53,7 @@ class Menu extends Component {
 
 
     render(){
-        const menu = this.props.staffs.map((staff) => {
+        const stafflist = this.props.staffs.map((staff) => {
             return (
                 <div key={staff.id} className={this.state.click ? "col-12 col-sm-6 col-md-4" : "col-6 col-sm-4 col-md-2 mt-3"}>
                     {/*Thay đổi giao diện trên màn hình khi click một cái vào nút*/}
@@ -75,7 +75,7 @@ class Menu extends Component {
             <div className="container">
                 <div className="row">
                     
-                        {menu}
+                        {stafflist}
                     
                 </div>
                 <div className="my-2">
@@ -96,4 +96,4 @@ class Menu extends Component {
 
 
 }
-export default Menu;
+export default StaffList;
