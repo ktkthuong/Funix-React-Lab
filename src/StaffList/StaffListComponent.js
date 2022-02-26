@@ -79,9 +79,10 @@ class Menu extends Component {
                     
                 </div>
                 <div className="my-2">
-                    {/*Thêm nút bấm vào trang*/}
+                    
                     <p>Bấm vào tên nhân viên để xem chi tiết thông tin cá nhân.</p>
                 </div>
+                {/*Thêm nút bấm vào trang*/}
                 <Button onClick={this.handleToggle}>Thay đổi giao diện</Button>
                 <div className='row'>
                     <div className="col-12 col-md-5 mt-3">
