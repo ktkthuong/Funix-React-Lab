@@ -5,12 +5,12 @@ class Menu extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            selectedDish: null}
+        console.log ("Menu Component contructor is invoked")
 
     }
 
-    onDishSelect(dish){
-        this.setState({ selectedDish:dish});
-    }
     renderDish(dish) {
         if(dish!=null){
             return(
