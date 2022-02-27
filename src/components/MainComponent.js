@@ -11,9 +11,14 @@ class Main extends Component {
   constructor (props){
     super(props);
     this.state = {
-      dishes: DISHES
+      dishes: DISHES,
+      selectedDish: null
     };
   }
+  
+  onDishSelect(dish){
+    this.setState({ selectedDish:dish});
+}
   render(){
     return (
       <div className="App">
@@ -23,6 +28,7 @@ class Main extends Component {
           </div>
         </Navbar>
         <Menu dishes={this.state.dishes} />
+        <DishDetail dish={} />
         
       </div>
     );
