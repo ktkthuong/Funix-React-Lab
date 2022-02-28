@@ -5,11 +5,11 @@ class Menu extends Component {
 
     constructor(props){
         super(props);
-        this.state = {
-            selectedDish: null}
+
         console.log ("Menu Component contructor is invoked")
 
     }
+ 
 
     renderDish(dish) {
         if(dish!=null){
@@ -35,7 +35,7 @@ class Menu extends Component {
         const menu = this.props.dishes.map((dish) => {
             return (
                 <div key={dish.id} className="col-12 col-md-5 m-1">
-                    <Card onClick={() => this.onDishSelect(dish)}>
+                    <Card onClick={}>
                         
                         <CardImg width="100%" src={dish.image} alt={dish.name} />
                         
