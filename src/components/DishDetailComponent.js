@@ -5,7 +5,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 
 
     
-
+    {/*Functional Components*/}
     function RenderDish({dish}) {
         
             return(
@@ -20,7 +20,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
             );
     }
         
-    
+    {/*Functional Components*/}
     function RenderComments({comments}){
         if(comments!=null){
             return(
