@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
     function RenderMenuItem({dish,onClick}){
         return(
             <Card>
-               <Link to={`/menu/${this.id}`} >      
+               <Link to={`/menu/${dish.id}`} >      
                 <CardImg width="100%" src={dish.image} alt={dish.name} />
                         
                 <CardImgOverlay>
