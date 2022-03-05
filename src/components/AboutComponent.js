@@ -1,35 +1,52 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader,CardImg, CardImgOverlay,CardTitle, Media } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 
-function RenderLeader({leader,onClick}){
+function RenderLeader({leader}){
     return(
-        <Card>
-           <Link to={`/aboutus/${leader.id}`} >      
-            <CardImg width="100%" src={leader.image} alt={leader.name} />
-                    
-            <CardImgOverlay>
-                <CardTitle>{leader.name}</CardTitle>
-                        
-            </CardImgOverlay>
-            </Link>    
-        </Card>
+       <Media tag="li">
+           <Media left middle>
+                <Media object src={leader.image} alt={leader.name} />
+           </Media>
+           <Media body className="ml-5">
+                <Media heading>{leader.name}</Media>
+                <p>{leader.designation}</p>
+                <p>{leader.description}</p>
+           </Media>
+
+       </Media> 
     );
 }
 
-function About(props) {
-
+function LeaderList(props){
     const leaders = props.leaders.map((leader) => {
         return (
             
             <div key={leader.id} >
+                <div className='col-12 mt-2'>
                     <RenderLeader leader={leader} />
-                    <p>Leader {leader.name}</p>
+                    
+                </div>    
             </div>
         );
     });
 
+    return(
+        
+            <Media list>
+                {leaders}
+            </Media>
+        
+        
+
+    );
+    
+}
+
+function About(props) {
+
+    
     return(
         <div className="container">
             <div className="row">
@@ -85,10 +102,9 @@ function About(props) {
                     <h2>Corporate Leadership</h2>
                 </div>
                 <div className="col-12">
-                    <Media list>
-                        {leaders}
-                    </Media>
+                    <LeaderList leaders={props.leaders} />
                 </div>
+                
             </div>
         </div>
     );
