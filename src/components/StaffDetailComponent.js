@@ -6,14 +6,14 @@ import {Link} from 'react-router-dom';
 
     
     
-    function RenderDish({dish}) {
+    function RenderStaff({staff}) {
         
             return(
                 <Card>
-                   <CardImg width="50%" src={dish.image} alt={dish.name} />
+                   <CardImg width="50%" src={staff.image} alt={staff.name} />
                    <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
+                        <CardTitle>{staff.name}</CardTitle>
+                        <CardText>{staff.description}</CardText>
                         
                     </CardBody> 
                 </Card>
@@ -52,8 +52,8 @@ import {Link} from 'react-router-dom';
     }
 
 
-    const DishDetail = (props) => {
-        if(props.dish !=null){
+    const StaffDetail = (props) => {
+        if(props.staff !=null){
             return(
                 
                     <div className='container'>
@@ -61,15 +61,15 @@ import {Link} from 'react-router-dom';
                                 <Breadcrumb>
                                     
                                     <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
-                                    <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                                    <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
                                 </Breadcrumb>
                                 <div className='col-md-6'>
-                                    <h3>{props.dish.name}</h3>
+                                    <h3>{props.staff.name}</h3>
                                     <hr />
                                 </div>
 
                                 <div className='row'>
-                                    <RenderDish dish={props.dish} />
+                                    <RenderStaff staff={props.staff} />
                                     <RenderComments comments={props.comments} /> 
                                 </div>
 

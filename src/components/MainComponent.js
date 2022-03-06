@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import Home from './HomeComponent';
-import Menu from './MenuComponent';
-import Contact from './ContactComponent';
-import DishDetail from './DishDetailComponent';
+
+import StaffList from './StaffListComponent';
+import StaffDetail from './StaffDetailComponent';
 import About from './AboutComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-import { DISHES } from '../shared/dishes';
-import { COMMENTS } from '../shared/comments';
-import { LEADERS } from '../shared/leaders';
-import { PROMOTIONS } from '../shared/promotions';
+import { STAFFS } from '../shared/staffs';
+
 import {Switch, Route, Redirect} from 'react-router-dom';
 
 
