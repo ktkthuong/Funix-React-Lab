@@ -45,11 +45,7 @@ class Header extends Component {
                                     <span className="fa fa-money fa-lg"></span> Bản Lương
                                 </NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link" to="/contactus">
-                                    <span className="fa fa-address-card fa-lg"></span> Contact Us
-                                </NavLink>
-                            </NavItem>
+                            
                         </Nav>
                     </Collapse>
                 </div>
@@ -58,8 +54,8 @@ class Header extends Component {
                 <div className='container'>
                     <div className="row row-header">
                         <div className="col-12 col-sm-6">
-                            <h1>Ristorante Con Fusion</h1>
-                            <p>We take inspiration from the World's best cuisines, and create a unique fusion exprience. Our lipsmacking creations will tickle your culinary senses!</p>
+                            <h1>Nhân Viên</h1>
+                            
                         </div>
                     </div>
                 </div>
