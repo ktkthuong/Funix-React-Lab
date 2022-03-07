@@ -7,9 +7,11 @@ function RenderStaffList({staff}){
         <Card>
            <Link to={`/staff/${staff.id}`} >      
             <CardImg width="100%" src={staff.image} alt={staff.name} />
-                <div className="text-center mt-2">
-                    <CardTitle>{staff.name}</CardTitle>
-                </div>
+                    
+            <div class="text-center mt-2">
+                <CardTitle>{staff.name}</CardTitle>
+                        
+            </div>
             </Link>    
         </Card>
     );
@@ -36,7 +38,7 @@ class StaffList extends Component {
     render(){
         const staffList = this.state.staffs.map((staff) => {
             return (
-                <div key={staff.id} className="col-12 col-sm-4 col-md-2 my-2    ">
+                <div key={staff.id} className="col-12 col-sm-4 col-md-2 my-2">
                     <RenderStaffList staff={staff} />
                 </div>
             );
@@ -47,7 +49,7 @@ class StaffList extends Component {
                 <div className='row'>
                     
                     <div className='col-12'>
-                        <h3>Nhân viên</h3>
+                        <h3 className="staff my-2">Nhân viên</h3>
                         <hr className="my-2"/>
                     </div>
                 </div>
