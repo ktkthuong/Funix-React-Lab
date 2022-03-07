@@ -9,14 +9,15 @@ import {Link} from 'react-router-dom';
     function RenderStaff({staff}) {
         
             return(
-                <Card>
-                   <CardImg width="50%" src={staff.image} alt={staff.name} />
-                   <CardBody>
-                        <CardTitle>{staff.name}</CardTitle>
-                        <CardText>{staff.description}</CardText>
-                        
-                    </CardBody> 
-                </Card>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-12 col-md-4 col-lg-3'>
+                            <Card>
+                                <CardImg src={staff.image} alt={staff.name} />
+                            </Card>    
+                        </div>
+                    </div>
+                </div>
             );
     }
         
