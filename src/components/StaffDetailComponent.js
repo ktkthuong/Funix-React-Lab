@@ -12,12 +12,12 @@ import dateFormat from 'dateformat';
             return(
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-12 col-md-4 col-lg-3'>
+                        <div className='col-12 col-md-4 col-sm-3'>
                             <Card>
                                 <CardImg src={staff.image} alt={staff.name} />
                             </Card>    
                         </div>
-                        <div className='col-12 col-md-8 col-lg-9'>
+                        <div className='col-12 col-md-8 col-sm-9'>
                             <Card>
                                 <CardBody>
                                     <CardTitle>Họ và tên: {staff.name}</CardTitle>

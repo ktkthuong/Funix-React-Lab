@@ -10,7 +10,6 @@ const Salary=(props) =>{
     const handleSort = (e) => {
         setSortData(e.target.value);
     }
-
     if(sortData === "idAscending") {
         props.staffs.sort((a,b) => {
             return(
