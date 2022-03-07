@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import dateFormat from 'dateformat';
 
 
 
@@ -16,41 +17,24 @@ import {Link} from 'react-router-dom';
                                 <CardImg src={staff.image} alt={staff.name} />
                             </Card>    
                         </div>
+                        <div className='col-12 col-md-8 col-lag-9'>
+                            <Card>
+                                <CardBody>
+                                    <CardTitle>Họ và tên: {staff.name}</CardTitle>
+                                    <CardText>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</CardText>
+                                    <CardText>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</CardText>
+                                    <CardTitle>Phòng ban: {staff.department.name}</CardTitle>
+                                    <CardTitle>Số ngày nghỉ còn lại: {staff.annualLeave}</CardTitle>
+                                    <CardTitle>Số ngày đã làm thêm: {staff.overTime}</CardTitle>
+                                </CardBody>
+                            </Card>
+                        </div>
                     </div>
                 </div>
             );
     }
         
     
-    function RenderComments({comments}){
-        if(comments!=null){
-            return(
-                <div className='col-12 col-md-5 m-1'>
-                    <h4>Comments</h4>
-                    <ul className='list-unstyled'>
-                        {comments.map((comment) =>{
-                            return(
-                                <div key={comment.id}>
-                                    <li>
-                                        <p>{comment.comment}</p>
-                                        <p>{comment.rating}</p>
-                                        
-                                        <p>-- {comment.author}, {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
-                                    </li>
-                                </div>
-                            );
-                        })}
-                    </ul>
-                </div>
-            )
-        }
-     
-        else{
-            return(
-                <div></div>
-            );
-        }
-    }
 
 
     const StaffDetail = (props) => {
@@ -59,22 +43,19 @@ import {Link} from 'react-router-dom';
                 
                     <div className='container'>
                         <div className='row'>
-                                <Breadcrumb>
+                            <Breadcrumb>
                                     
-                                    <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
-                                    <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
-                                </Breadcrumb>
-                                <div className='col-md-6'>
-                                    <h3>{props.staff.name}</h3>
-                                    <hr />
-                                </div>
+                                <BreadcrumbItem><Link to='/staff'>Nhân viên</Link></BreadcrumbItem>
+                                <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
+                            </Breadcrumb>
+                        </div>
 
-                                <div className='row'>
-                                    <RenderStaff staff={props.staff} />
-                                    <RenderComments comments={props.comments} /> 
-                                </div>
+                            <div className='row'>
+                                <RenderStaff staff={props.staff} />
+                                    
+                            </div>
 
-                        </div>                        
+                                              
 
                     </div>
               
@@ -94,4 +75,4 @@ import {Link} from 'react-router-dom';
     }
 
 
-export default DishDetail;
+export default StaffDetail;
