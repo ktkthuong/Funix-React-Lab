@@ -32,6 +32,15 @@ const Salary=(props) =>{
             );
         });
     }
+    if(sortData === "salaryDescending") {
+        props.staffs.sort((a,b) => {
+            return(
+                (b.salaryScale * basicSalary + b.overTime * overTimeSalary) -
+                (a.salaryScale * basicSalary + a.overTime * overTimeSalary)
+            );
+        });
+    }
+    
 }
 
 export default Salary;
