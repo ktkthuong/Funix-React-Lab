@@ -1,0 +1,49 @@
+<mxfile host="65bd71144e">
+    <diagram id="ToFKnk3klWX5CJQfzEk8" name="Page-1">
+        <mxGraphModel dx="308" dy="357" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="1">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="10" width="770" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Nhân viên" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="100" y="20" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Phòng ban&lt;span style=&quot;white-space: pre&quot;&gt; &lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="250" y="20" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Bảng lương" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#333333;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="405" y="20" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Nhân viên" style="whiteSpace=wrap;html=1;aspect=fixed;labelBackgroundColor=none;labelBorderColor=none;verticalAlign=bottom;fillColor=#009999;fontColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="120" width="130" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="shape=actor;whiteSpace=wrap;html=1;labelBackgroundColor=#33FFFF;labelBorderColor=#000099;fillColor=#FF33FF;" parent="1" vertex="1">
+                    <mxGeometry x="85" y="150" width="40" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Nhân Viên" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;labelBorderColor=none;fontColor=#000000;fontStyle=1;fontSize=15;fillColor=#33FFFF;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="80" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=#007FFF;labelBorderColor=none;fontColor=#FFFFFF;shadow=0;fillColor=#00CCCC;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="820" width="770" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="Địa chỉ, số điện thoại, email" style="whiteSpace=wrap;html=1;aspect=fixed;labelBackgroundColor=none;labelBorderColor=none;fontColor=#000000;fillColor=#999999;" parent="1" vertex="1">
+                    <mxGeometry x="286" y="843" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="Google, facebook, link in, youtube" style="whiteSpace=wrap;html=1;aspect=fixed;labelBackgroundColor=none;labelBorderColor=none;fontColor=#000000;fillColor=#999999;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="835" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="Nguyễn Văn A" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;labelBorderColor=none;fontColor=#000000;fontStyle=1;fontSize=15;fillColor=#33FFFF;" vertex="1" parent="1">
+                    <mxGeometry x="164" y="80" width="178" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="&lt;div&gt;&lt;span&gt;Họ tên:&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;Ngày sinh:&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;Ngày vào công ty:&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;Số ngày nghỉ còn lại:&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;Số ngày làm thêm:&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;labelBackgroundColor=none;labelBorderColor=none;verticalAlign=top;fillColor=#009999;fontColor=#FFFFFF;align=left;textDirection=ltr;horizontal=1;" vertex="1" parent="1">
+                    <mxGeometry x="191" y="120" width="169" height="169" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="Địa chỉ, số điện thoại, email" style="whiteSpace=wrap;html=1;aspect=fixed;labelBackgroundColor=none;labelBorderColor=none;fontColor=#000000;fillColor=#999999;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="843" width="110" height="110" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
