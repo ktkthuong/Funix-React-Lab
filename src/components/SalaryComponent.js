@@ -5,7 +5,7 @@ import {Link}from 'react-router-dom';
 
 const Salary=(props) =>{
     const basicSalary=3000000;
-    const overTimeSalary=200000;
+    const overTimeSalary=200000/8;
     const [sortData, setSortData]=useState("idAscending");
     const handleSort = (e) => {
         setSortData(e.target.value);
@@ -44,7 +44,7 @@ const Salary=(props) =>{
         const salary = parseInt(((staff.salaryScale * basicSalary) + (staff.overTime * overTimeSalary)),10);            
         return (
             <div key={staff.id} className="col-12 col-sm-6 col-md-4 my-2">
-                <Card className="margin-salary">
+                <Card>
                     <div className="m-4">
                     <CardTitle>{staff.name}</CardTitle>
                     <CardText>Mã nhân viên: {staff.id}</CardText>
