@@ -9,8 +9,8 @@ import {Link} from 'react-router-dom';
     function RenderDish({dish}) {
         
             return(
-                <Card>
-                   <CardImg width="50%" src={dish.image} alt={dish.name} />
+                <Card className="col-12 col-md-5 m-1">
+                   <CardImg width="100%" src={dish.image} alt={dish.name} />
                    <CardBody>
                         <CardTitle>{dish.name}</CardTitle>
                         <CardText>{dish.description}</CardText>
