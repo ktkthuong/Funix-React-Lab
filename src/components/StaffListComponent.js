@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 import AddStaff from './AddStaffComponent';
 
 function RenderStaffList({staff}){
+    console.log(staff)
     return(
         <Card>
            <Link to={`/staff/${staff.id}`} >      
             <CardImg width="100%" src={staff.image} alt={staff.name} />
                     
-            <div class="text-center mt-2">
+            <div className="text-center mt-2">
                 <CardTitle>{staff.name}</CardTitle>
                         
             </div>
@@ -37,6 +38,10 @@ class StaffList extends Component {
         })
         e.preventDefault()
     }
+
+    handleAddStaff=(staff) => {
+        this.props.handleAddStaff(staff);
+    }
     render(){
         const staffList = this.state.staffs.map((staff) => {
             return (
@@ -52,7 +57,7 @@ class StaffList extends Component {
                     
                     <div className='col-12'>
                         <h3 className="staff my-2">Nhân viên</h3>
-                        <AddStaff staffs={this.props.staffs} />
+                        <AddStaff staffs={this.props.staffs} handleAddStaff={this.handleAddStaff}/>
                         <hr className="my-2"/>
                     </div>
                 </div>

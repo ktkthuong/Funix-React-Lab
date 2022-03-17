@@ -21,6 +21,9 @@ class Main extends Component {
       
     };
   }
+  handleAddStaff=(newSaff)=> {
+    this.setState({staff:[...this.state.staffs, newSaff]});
+  }
 
   render(){
     
@@ -39,7 +42,8 @@ class Main extends Component {
 
         <Switch>
           
-          <Route exact path="/" component={() => <StaffList staffs={this.state.staffs} />} />
+          <Route exact path="/" component={() => <StaffList staffs={this.state.staffs} 
+          handleAddStaff={this.handleAddStaff}/>} />
           <Route exact path="/staff" component={() => <StaffList staffs={this.state.staffs} />} />
           <Route path="/department" component={() => <Department departments={this.state.departments} />} />
           <Route path="/salary" component={() => <Salary staffs={this.state.staffs} />} />
