@@ -52,7 +52,7 @@ class StaffList extends Component {
                     
                     <div className='col-12'>
                         <h3 className="staff my-2">Nhân viên</h3>
-                        <AddStaff />
+                        <AddStaff staffs={this.props.staffs} />
                         <hr className="my-2"/>
                     </div>
                 </div>
