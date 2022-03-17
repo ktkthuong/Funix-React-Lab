@@ -21,8 +21,8 @@ class Main extends Component {
       
     };
   }
-  handleAddStaff=(newSaff)=> {
-    this.setState({staff:[...this.state.staffs, newSaff]});
+  handleAddStaff=(newStaff)=> {
+    this.setState({staffs:[...this.state.staffs, newStaff]});
   }
 
   render(){

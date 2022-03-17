@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Input, Label, Modal, Row, Col, Form, FormGroup, FormFeedback, ModalHeader, ModalBody } from 'reactstrap';
+import { DEPARTMENTS } from '../shared/staffs';
 
 class AddStaff extends Component{
     constructor(props){
@@ -13,6 +14,7 @@ class AddStaff extends Component{
             department: '',
             annualLeave: '',
             overTime: '',
+            salary: '',
             image: '/assets/images/alberto.png',
             isOpenModal: false
         }
@@ -39,7 +41,7 @@ class AddStaff extends Component{
             doB: this.state.doB,
             salaryScale: this.state.salaryScale,
             startDate: this.state.startDate,
-            department: this.state.department,
+            department: DEPARTMENTS.find(department => department.id === this.state.department),
             annualLeave: this.state.annualLeave,
             overTime: this.state.overTime,
             image: this.state.image
@@ -94,14 +96,14 @@ class AddStaff extends Component{
                                     <Label htmlFor="department" md={4}>Phòng ban</Label>
                                     <Col md={8}>
                                         <Input type='select' id='department' name='department' 
-                                        value={this.state.doB} 
+                                        value={this.state.department} 
                                         onChange={this.handleInputChange} >
                                             <option value='' disabled>Select Department</option>
-                                            <option value='Dep01'>Sale</option>
-                                            <option value='Dep02'>HR</option>
-                                            <option value='Dep03'>Marketing</option>
-                                            <option value='Dep04'>IT</option>
-                                            <option value='Dep05'>Finance</option>
+                                            <option value='Dept01'>Sale</option>
+                                            <option value='Dept02'>HR</option>
+                                            <option value='Dept03'>Marketing</option>
+                                            <option value='Dept04'>IT</option>
+                                            <option value='Dept05'>Finance</option>
 
                                         </Input>   
                                     </Col>
