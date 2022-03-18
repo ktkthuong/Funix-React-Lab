@@ -104,8 +104,8 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
                             </Row>
                             <Row className="form-group">
                                 <Col>
-                                <Label htmlFor="yourname">Your Name</Label>
-                                <Control.text model=".yourname" id="yourname" name="yourname"
+                                <Label htmlFor="author">Your Name</Label>
+                                <Control.text model=".author" id="author" name="author"
                                     placeholder="Your Name"
                                     className="form-control"
                                     validators={{
@@ -113,7 +113,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
                                     }} />
                                     <Errors
                                         className="text-danger"
-                                        model=".yourname"
+                                        model=".author"
                                         show="touched"
                                         messages={{
                                             required: 'Required',                                            
