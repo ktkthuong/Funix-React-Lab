@@ -24,7 +24,7 @@ const mapDispatchToProps= (dispatch) => ({
   fetchDishes: () => {dispatch(fetchDishes())},
   resetFeedbackForm: () => {dispatch(actions.reset('feedback'))},
   fetchComments: () => {dispatch(fetchComments())},
-  fetchPromos: () => {dispatch(fetchPromos())},
+  fetchPromos: () => {dispatch(fetchPromos())}
 });
 
 class Main extends Component {
@@ -60,7 +60,7 @@ class Main extends Component {
           isLoading={this.props.dishes.isLoading}
           errMess={this.props.dishes.errMess}
           comments={this.props.comments.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))}
-          commentserrMess={this.props.comments.errMess}
+          commentsErrMess={this.props.comments.errMess}
           addComment={this.props.addComment}
         />
       )
