@@ -73,8 +73,8 @@ import {FadeTransform, Fade, Stagger} from 'react-animation-components';
     const required=(val) => val && val.length;
     const maxLength=(len)=>(val)=> !(val) || (val.length<=len);
     const minLength=(len)=>(val)=>(val)&& (val.length >=len);
-    const isNumber=(val)=> !isNaN(Number(val));
-    const validEmail=(val)=> /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);   
+    // const isNumber=(val)=> !isNaN(Number(val));
+    // const validEmail=(val)=> /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);   
 
     class CommentForm extends Component {
         constructor(props){
@@ -107,19 +107,19 @@ import {FadeTransform, Fade, Stagger} from 'react-animation-components';
                             <Row className="form-group">
                                 <Col>
                                 <Label htmlFor="rating">Rating</Label>
-                                <Control.select model=".rating" id="rating" className="form-control">
+                                <Control.Select model=".rating" id="rating" className="form-control">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                     <option>4</option>
                                     <option>5</option>
-                                </Control.select>
+                                </Control.Select>
                                 </Col>
                             </Row>
                             <Row className="form-group">
                                 <Col>
                                 <Label htmlFor="author">Your Name</Label>
-                                <Control.text model=".author" id="author" name="author"
+                                <Control.Text model=".author" id="author" name="author"
                                     placeholder="Your Name"
                                     className="form-control"
                                     validators={{
@@ -139,7 +139,7 @@ import {FadeTransform, Fade, Stagger} from 'react-animation-components';
                             <Row className="form-group">
                                 <Col>
                                 <Label htmlFor="comment">Comment</Label>
-                                <Control.textarea model=".comment" id="comment"
+                                <Control.Textarea model=".comment" id="comment"
                                             rows="6" className="form-control" />
                                 </Col>
                             </Row>

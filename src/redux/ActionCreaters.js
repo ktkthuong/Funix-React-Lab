@@ -1,5 +1,5 @@
 import * as ActionTypes from './ActionTypes';
-import { DISHES } from '../shared/dishes';
+
 import { baseUrl } from '../shared/baseUrl';
 
 export const addComment = (comment)=>({
@@ -150,3 +150,4 @@ export const addPromos = (promos) => ({
     type: ActionTypes.ADD_PROMOS,
     payload: promos
 });
+
