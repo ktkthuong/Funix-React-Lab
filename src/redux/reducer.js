@@ -9,6 +9,12 @@ export const initialState ={
     
 };
 
-export const Reducer =(state = initialState, action )=> {
-    return state;
-};   
+export const Reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case ActionTypes.ADD_NEW_STAFF:
+            return { staffs: [...state.staffs, action.payload] }
+
+        default:
+            return state;
+    }
+} 
