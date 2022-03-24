@@ -9,6 +9,7 @@ import Footer from './FooterComponent';
 // import { STAFFS, DEPARTMENTS} from '../shared/staffs';
 
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
+import {addStaff}from '../redux/ActionCreators';
 import {connect} from 'react-redux';
 
 
@@ -18,6 +19,9 @@ const mapStateToProps = state =>{
     departments: state.departments
   }
 }
+const mapDispatchToProps = (dispatch) => ({
+  addStaff: (newStaff) => dispatch(addStaff(newStaff))
+})
 
 
 class Main extends Component {
@@ -29,9 +33,10 @@ class Main extends Component {
       
     // };
   }
-  handleAddStaff=(newStaff)=> {
-    this.setState({staffs:[...this.props.staffs, newStaff]});
-  }
+  // handleAddStaff=(newStaff)=> {
+  //   this.setState({staffs:[...this.props.staffs, newStaff]});
+  // }
+  
 
   render(){
     
@@ -51,9 +56,9 @@ class Main extends Component {
         <Switch>
           
           <Route exact path="/" component={() => <StaffList staffs={this.props.staffs} 
-          handleAddStaff={this.handleAddStaff}/>} />
+          handleAddStaff={this.props.addStaff}/>} />
           <Route exact path="/staff" component={() => <StaffList staffs={this.props.staffs} 
-          handleAddStaff={this.handleAddStaff}/>} />
+          handleAddStaff={this.props.addStaff}/>} />
           <Route path="/department" component={() => <Department departments={this.props.departments} />} />
           <Route path="/salary" component={() => <Salary staffs={this.props.staffs} />} />
           <Route path="/staff/:staffId" component={StaffWithId} />
@@ -66,4 +71,4 @@ class Main extends Component {
   }  
 }
 
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
