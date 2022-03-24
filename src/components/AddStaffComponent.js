@@ -91,14 +91,14 @@ class AddStaff extends Component{
         }
         if(this.state.touched.startDate.length===''){
             errors.startDate='Hãy nhập ngày vào làm của bạn';
-        }else if(this.state.touched.startDate && startDate>doB){
+        }else if(this.state.touched.startDate && startDate<doB){
             errors.startDate='Ngày vào làm phải lớn hơn ngày sinh của bạn';
         }
         if(this.state.touched.department &&department.length===''){
             errors.department='Hãy nhập phòng ban của bạn';
         }
-        if(this.state.touched.salaryScale &&salaryScale<=1){
-            errors.salaryScale='Hệ số lương phải lớn hơn hoặc bằng 1';
+        if(this.state.touched.salaryScale &&salaryScale<1){
+            errors.salaryScale='Hệ số lương phải lớn hơn 1';
         }
         if(this.state.touched.annualLeave && annualLeave===''){
             errors.annualLeave='Hãy nhập số ngày nghỉ thường niên của bạn';
