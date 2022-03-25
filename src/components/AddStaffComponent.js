@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { Button, Label, Modal, Row, Col, ModalHeader, ModalBody } from 'reactstrap';
 import { DEPARTMENTS } from '../shared/staffs';
-import {Control, LocalForm} from 'react-redux-form';
+import {Control, LocalForm, Errors} from 'react-redux-form';
 
 class AddStaff extends Component{
     constructor(props){
         super(props);
-        // this.state={
+         this.state={
         //     id: '',
         //     name: '',
         //     doB: '',
@@ -16,19 +16,22 @@ class AddStaff extends Component{
         //     annualLeave: '',
         //     overTime: '',
         //     salary: '',
-        //     image: '/assets/images/alberto.png',
-        //     isOpenModal: false,
-        //     touched: {
-        //         name:false,
-        //         doB:false,
-        //         startDate:false,
-        //         department:false,
-        //         salaryScale:false,
-        //         annualLeave:false,
-        //         overTime:false
+            image: '/assets/images/alberto.png',
+            isOpenModal: false,
+            // touched: {
+            //     name:false,
+            //     doB:false,
+            //     startDate:false,
+            //     department:false,
+            //     salaryScale:false,
+            //     annualLeave:false,
+            //     overTime:false
 
-        //     }
-        // }
+            // },
+            staffs:this.props.staffs,
+            departments:this.props.departments
+
+        }
         this.toggleModal=this.toggleModal.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
         //this.handleInputChange=this.handleInputChange.bind(this);
@@ -51,22 +54,23 @@ class AddStaff extends Component{
         alert('Current state is: '+ JSON.stringify(values));
     }
 
-    handleAddStaff(e){
-        e.preventDefault();
+    handleAddStaff(values){
+        // e.preventDefault();
         const newStaff={
             id: this.props.staffs.length,
-            name: this.props.name,
-            doB: this.props.doB,
-            salaryScale: this.props.salaryScale,
-            startDate: this.props.startDate,
-            department: DEPARTMENTS.find(department => department.id === this.props.department),
-            annualLeave: this.props.annualLeave,
-            overTime: this.props.overTime,
-            image: this.props.image
+            name: values.name,
+            doB: values.doB,
+            salaryScale: values.salaryScale,
+            startDate: +values.startDate,
+            department: DEPARTMENTS.find(department => department.id === values.department),
+            annualLeave:+values.annualLeave,
+            overTime: +values.overTime,
+            image: this.state.image
             
         }
         this.toggleModal();
         this.props.handleAddStaff(newStaff);
+        localStorage.setItem('store',JSON.stringify(newStaff));
     }
     // handleBlur=(field) => ()=>{
     //     this.setState({
@@ -131,7 +135,7 @@ class AddStaff extends Component{
                                 <Row className='form-group'>
                                     <Label htmlFor=".name" md={4}>Họ và tên</Label>
                                     <Col md={8}>
-                                        <Control.Text model='.name' id='name' name='name' 
+                                        <Control.text model='.name' id='name' name='name' 
                                         // value={this.state.name} 
                                         // valid={errors.name===''}
                                         // invalid={errors.name!==''}
@@ -148,7 +152,7 @@ class AddStaff extends Component{
                                 <Row className='form-group'>
                                     <Label htmlFor=".doB" md={4}>Ngày sinh</Label>
                                     <Col md={8}>
-                                        <Control.Text model='.doB' id='doB' name='doB' 
+                                        <Control.text type='date' model='.doB' id='doB' name='doB' 
                                         value={this.props.doB} 
                                         // valid={errors.doB===''}
                                         // invalid={errors.doB!==''}
@@ -163,7 +167,7 @@ class AddStaff extends Component{
                                 <Row className='form-group'>
                                     <Label htmlFor=".startDate" md={4}>Ngày vào công ty</Label>
                                     <Col md={8}>
-                                        <Control.Text model='.startDate' id='startDate' name='startDate' 
+                                        <Control.text type='date' model='.startDate' id='startDate' name='startDate' 
                                          value={this.props.startDate}
                                         // valid={errors.startDate===''}
                                         // invalid={errors.startDate!==''}
@@ -178,16 +182,16 @@ class AddStaff extends Component{
                                 <Row className='form-group'>
                                     <Label htmlFor=".department" md={4}>Phòng ban</Label>
                                     <Col md={8}>
-                                        <Control.Select model='.department' id='department' name='department' >
+                                        <Control.select model='.department' id='department' name='department' className='form-control'>
                                         
-                                            <option value='' disabled>Select Department</option>
+                                            <option value='' >Select Department</option>
                                             <option value='Dept01'>Sale</option>
                                             <option value='Dept02'>HR</option>
                                             <option value='Dept03'>Marketing</option>
                                             <option value='Dept04'>IT</option>
                                             <option value='Dept05'>Finance</option>
 
-                                        </Control.Select>
+                                        </Control.select>
                                     </Col>
                                 </Row>
                             {/* </FormGroup>
@@ -195,7 +199,7 @@ class AddStaff extends Component{
                                 <Row className='form-group'>
                                     <Label htmlFor=".salaryScale" md={4}>Hệ số lương</Label>
                                     <Col md={8}>
-                                        <Control.Text model='.salaryScale' id='salaryScale' name='salaryScale' 
+                                        <Control.text model='.salaryScale' id='salaryScale' name='salaryScale' 
                                         // value={this.state.salaryScale}
                                         // valid={errors.salaryScale===''}
                                         // invalid={errors.salaryScale!==''} 
@@ -210,7 +214,7 @@ class AddStaff extends Component{
                                 <Row className='form-group'>
                                     <Label htmlFor=".annualLeave" md={4}>Số ngày nghỉ còn lại</Label>
                                     <Col md={8}>
-                                        <Control.Text model='.annualLeave' id='annualLeave' name='annualLeave' 
+                                        <Control.text model='.annualLeave' id='annualLeave' name='annualLeave' 
                                         // value={this.state.annualLeave} 
                                         // valid={errors.annualLeave===''}
                                         // invalid={errors.annualLeave!==''} 
@@ -225,7 +229,7 @@ class AddStaff extends Component{
                                 <Row className='form-group'>
                                     <Label htmlFor=".overTime" md={4}>Số ngày đã làm thêm</Label>
                                     <Col md={8}>
-                                        <Control.Text model='.overTime' id='overTime' name='overTime' 
+                                        <Control.text model='.overTime' id='overTime' name='overTime' 
                                         // value={this.state.overTime}
                                         // valid={errors.overTime===''}
                                         // invalid={errors.overTime!==''} 
