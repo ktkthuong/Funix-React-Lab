@@ -30,14 +30,15 @@ class AddStaff extends Component{
         //     }
         // }
         this.toggleModal=this.toggleModal.bind(this);
-        this.handleInputChange=this.handleInputChange.bind(this);
-        // this.handleAddStaff=this.handleAddStaff.bind(this);
+        this.handleSubmit=this.handleSubmit.bind(this);
+        //this.handleInputChange=this.handleInputChange.bind(this);
+         this.handleAddStaff=this.handleAddStaff.bind(this);
         // this.handleBlur=this.handleBlur.bind(this);
 
     }
 
     toggleModal(){
-        this.setState({isOpenModal:!this.state.isOpenModal});
+        this.setState({isOpenModal:!this.props.isOpenModal});
     }
 
     // handleInputChange(event){
@@ -54,14 +55,14 @@ class AddStaff extends Component{
         e.preventDefault();
         const newStaff={
             id: this.props.staffs.length,
-            name: this.state.name,
-            doB: this.state.doB,
-            salaryScale: this.state.salaryScale,
-            startDate: this.state.startDate,
-            department: DEPARTMENTS.find(department => department.id === this.state.department),
-            annualLeave: this.state.annualLeave,
-            overTime: this.state.overTime,
-            image: this.state.image
+            name: this.props.name,
+            doB: this.props.doB,
+            salaryScale: this.props.salaryScale,
+            startDate: this.props.startDate,
+            department: DEPARTMENTS.find(department => department.id === this.props.department),
+            annualLeave: this.props.annualLeave,
+            overTime: this.props.overTime,
+            image: this.props.image
             
         }
         this.toggleModal();
@@ -119,10 +120,10 @@ class AddStaff extends Component{
         // const errors=this.validate(this.state.name, this.state.doB, this.state.startDate, this.state.department, this.state.salaryScale, this.state.annualLeave, this.state.overTime);
         return(
             <React.Fragment>
-                <Button onClick={this.toggleModal} color='info' className="addButton">
+                <Button onClick={this.props.toggleModal} color='info' className="addButton">
                     <span className='fa fa-plus'></span>
                 </Button>
-                <Modal isOpen={this.state.isOpenModal} toggle={this.toggleModal}>
+                <Modal isOpen={this.props.isOpenModal} toggle={this.props.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Thêm nhân viên</ModalHeader>
                     <ModalBody>
                         <LocalForm onSubmit={(values)=>this.handleSubmit(values)}>
@@ -148,7 +149,7 @@ class AddStaff extends Component{
                                     <Label htmlFor=".doB" md={4}>Ngày sinh</Label>
                                     <Col md={8}>
                                         <Control.Text model='.doB' id='doB' name='doB' 
-                                        value={this.state.doB} 
+                                        value={this.props.doB} 
                                         // valid={errors.doB===''}
                                         // invalid={errors.doB!==''}
                                         // onChange={this.handleInputChange}
@@ -163,7 +164,7 @@ class AddStaff extends Component{
                                     <Label htmlFor=".startDate" md={4}>Ngày vào công ty</Label>
                                     <Col md={8}>
                                         <Control.Text model='.startDate' id='startDate' name='startDate' 
-                                         value={this.state.startDate}
+                                         value={this.props.startDate}
                                         // valid={errors.startDate===''}
                                         // invalid={errors.startDate!==''}
                                         // onChange={this.handleInputChange} 
