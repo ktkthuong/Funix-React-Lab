@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import dateFormat from 'dateformat';
+import {baseUrl} from '../shared/baseUrl';
 
 
 
@@ -14,7 +15,7 @@ import dateFormat from 'dateformat';
                     <div className='row'>
                         <div className='col-12 col-md-4 col-sm-3'>
                             <Card>
-                                <CardImg src={staff.image} alt={staff.name} />
+                                <CardImg src={baseUrl + staff.image} alt={staff.name} />
                             </Card>    
                         </div>
                         <div className='col-12 col-md-8 col-sm-9'>
