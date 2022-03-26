@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
 import { Button, Label, Modal, Row, Col, ModalHeader, ModalBody } from 'reactstrap';
 import { DEPARTMENTS } from '../shared/staffs';
+import {Link} from 'react-redux-form';
 import {Control, LocalForm, Errors} from 'react-redux-form';
+
+const required=(val)=> val&&val.length;
+const maxLength=(len)=>(val)=>!(val)||(val.length<=len);
+const minLength=(len) => (val) => (val) && (val.length >=len);
+const isNumber= (val) => !isNaN(Number(val));
+
 
 class AddStaff extends Component{
     constructor(props){
@@ -142,7 +149,20 @@ class AddStaff extends Component{
                                         // onChange={this.handleInputChange}
                                         // onBlur={this.handleBlur('name')}
                                         // <FormFeedback>{errors.name}</FormFeedback>
-                                        className='form-control'/>
+                                        className='form-control'
+                                        validators={{
+                                            required, minLength: minLength(3), maxLength: maxLength(25)
+                                        }}
+                                        />
+                                        <Errors 
+                                            className='text-danger'
+                                            model=".name"
+                                            show="touched"
+                                            messages={{
+                                                required: "Required ",
+                                                minLength: "Must be greater than 2 characters",
+                                                maxLength: "Must be 25 characters or less"
+                                            }}/>
                                         
 
                                     </Col>
@@ -153,13 +173,25 @@ class AddStaff extends Component{
                                     <Label htmlFor=".doB" md={4}>Ngày sinh</Label>
                                     <Col md={8}>
                                         <Control.text type='date' model='.doB' id='doB' name='doB' 
-                                        value={this.props.doB} 
+                                        //value={this.props.doB} 
                                         // valid={errors.doB===''}
                                         // invalid={errors.doB!==''}
                                         // onChange={this.handleInputChange}
                                         // onBlur={this.handleBlur('doB')} />
                                         // <FormFeedback>{errors.doB}</FormFeedback>
-                                        className='form-control'/>
+                                        className='form-control' 
+                                        validators={{
+                                            required
+                                        }}
+                                        />
+                                        <Errors 
+                                            className='text-danger'
+                                            model=".doB"
+                                            show="touched"
+                                            messages={{
+                                                required: "Required",
+                                                
+                                            }}/>
                                     </Col>
                                 </Row>
                             {/* </FormGroup>
@@ -167,14 +199,26 @@ class AddStaff extends Component{
                                 <Row className='form-group'>
                                     <Label htmlFor=".startDate" md={4}>Ngày vào công ty</Label>
                                     <Col md={8}>
-                                        <Control.text type='date' model='.startDate' id='startDate' name='startDate' 
-                                         value={this.props.startDate}
+                                        <Control.text type='date' model='.startDate' id='startDate' name='startDate'
+                                         //values={this.props.startDate}
                                         // valid={errors.startDate===''}
                                         // invalid={errors.startDate!==''}
                                         // onChange={this.handleInputChange} 
                                         // onBlur={this.handleBlur('startDate')} />
                                         // <FormFeedback>{errors.startDate}</FormFeedback>
-                                        className='form-control'/>
+                                        className='form-control'
+                                        validators={{
+                                            required
+                                        }}
+                                        />
+                                        <Errors 
+                                            className='text-danger'
+                                            model=".startDate"
+                                            show="touched"
+                                            messages={{
+                                                required: "Required",
+                                                
+                                            }}/>
                                     </Col>
                                 </Row>
                             {/* </FormGroup>
@@ -182,16 +226,27 @@ class AddStaff extends Component{
                                 <Row className='form-group'>
                                     <Label htmlFor=".department" md={4}>Phòng ban</Label>
                                     <Col md={8}>
-                                        <Control.select model='.department' id='department' name='department' className='form-control'>
-                                        
-                                            <option value='' >Select Department</option>
+                                        <Control.select model='.department' id='department' name='department' className='form-control'
+                                            validators={{
+                                                required
+                                            }}>
+                                                                                                                                 
+                                            <option value=''>Select Department</option>
                                             <option value='Dept01'>Sale</option>
                                             <option value='Dept02'>HR</option>
                                             <option value='Dept03'>Marketing</option>
                                             <option value='Dept04'>IT</option>
                                             <option value='Dept05'>Finance</option>
-
+                                              
                                         </Control.select>
+                                        <Errors 
+                                            className='text-danger'
+                                            model=".department"
+                                            show="touched"
+                                            messages={{
+                                                required: "Required",
+                                                
+                                            }}/>
                                     </Col>
                                 </Row>
                             {/* </FormGroup>
@@ -206,7 +261,18 @@ class AddStaff extends Component{
                                         // onChange={this.handleInputChange}
                                         // onBlur={this.handleBlur('salaryScale')}/>
                                         // <FormFeedback>{errors.salaryScale}</FormFeedback> 
-                                        className='form-control'/>
+                                        className='form-control'
+                                        validators={{
+                                            required
+                                        }}/>
+                                        <Errors 
+                                            className='text-danger'
+                                            model=".salaryScale"
+                                            show="touched"
+                                            messages={{
+                                                required: "Required",
+                                                
+                                            }}/>   
                                     </Col>
                                 </Row>
                             {/* </FormGroup>
@@ -221,7 +287,18 @@ class AddStaff extends Component{
                                         // onChange={this.handleInputChange}
                                         // onBlur={this.handleBlur('annualLeave')} />
                                         // <FormFeedback>{errors.annualLeave}</FormFeedback> 
-                                        className='form-control'/>
+                                        className='form-control'
+                                        validators={{
+                                            required
+                                        }} />
+                                        <Errors 
+                                            className='text-danger'
+                                            model=".annualLeave"
+                                            show="touched"
+                                            messages={{
+                                                required: "Required",
+                                                
+                                            }}/> 
                                     </Col>
                                 </Row>
                             {/* </FormGroup>
@@ -236,7 +313,18 @@ class AddStaff extends Component{
                                         // onChange={this.handleInputChange} 
                                         // onBlur={this.handleBlur('overTime')} />
                                         // <FormFeedback>{errors.overTime}</FormFeedback> 
-                                        className='form-control'/>
+                                        className='form-control'
+                                        validators={{
+                                            required
+                                        }} />
+                                        <Errors 
+                                            className='text-danger'
+                                            model=".overTime"
+                                            show="touched"
+                                            messages={{
+                                                required: "Required",
+                                                
+                                            }}/>
                                     </Col>
                                 </Row>
                             {/* </FormGroup> */}
