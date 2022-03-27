@@ -70,3 +70,42 @@
     transform: rotate(360deg);
   }
 }
+
+.page-enter {
+  opacity: 0.01;
+  transform: translateX(-100%);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 300ms ease-in;
+}
+.page-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.page-exit-active {
+  opacity: 0.01;
+  transform: translateX(100%);
+  transition: all 300ms ease-out;
+}
+.salary {
+  background-color: rgba(128, 128, 128, 0.212);
+  padding-left: 1rem;
+}
+.staff {
+  display: inline-block;
+  padding-right: 9px;
+}
+.addButton {
+  display: inline-block;
+  padding: 5px 12px;
+  vertical-align: top;
+  margin-left: 9px;
+}
+
+.inputSearch {
+  display: inline-block;
+  width: 80%;
+  padding-right: 9px;
+} 

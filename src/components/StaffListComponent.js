@@ -1,16 +1,18 @@
-import React, {Component} from "react";
+//import React, {Component} from "react";
 import { Card, CardImg, CardTitle,
-      Form, Row, Input, Col, Button } from 'reactstrap';
+      Form,FormGroup, Input, Col, Button } from 'reactstrap';
+import React, {useState} from "react";
 import { Link } from 'react-router-dom';
 import AddStaff from './AddStaffComponent';
-import {baseUrl} from '../shared/baseUrl';
+//import {baseUrl} from '../shared/baseUrl';
+import { Loading } from './LoadingComponent';
 
 function RenderStaffList({staff}){
     console.log(staff)
     return(
         <Card>
            <Link to={`/staff/${staff.id}`} >      
-            <CardImg width="100%" src={baseUrl + staff.image} alt={staff.name} />
+            <CardImg width="100%" src="assets/images/alberto.png" alt={staff.name} />
                     
             <div className="text-center mt-2">
                 <CardTitle>{staff.name}</CardTitle>
@@ -21,73 +23,95 @@ function RenderStaffList({staff}){
     );
 }
 
-class StaffList extends Component {
+const StaffList = (props) => {
+    console.log(props)
 
-    constructor(props){
-        super(props);
-        this.state={
-            staffs:this.props.staffs,
-            searchName:"",
-        }
-        this.handleSearch=this.handleSearch.bind(this)
-    }
+    // Tìm kiếm nhân viên
 
-    handleSearch(e){
-        const searchName=this.search.value
-        this.setState({
-            staffs: this.props.staffs.filter(staff => staff.name.toLowerCase().includes(searchName.toLowerCase()))
-        })
-        e.preventDefault()
+    const [searchInput, setSearchInput] = useState("");
+    const [searchStaff, setSearchStaff] = useState();
+    const handleSearch = (event) => {
+        event.preventDefault();
+        const search = props.staffs.staffs.filter((staff) => 
+            staff.name.toLowerCase().includes(searchInput.toLowerCase())
+        );
+        setSearchStaff(search);
     }
-
-    handleAddStaff=(staff) => {
-        this.props.handleAddStaff(staff);
-    }
-    render(){
-        const staffList = this.props.staffs.staffs.map((staff) => {
-            return (
-                <div key={staff.id} className="col-6 col-sm-4 col-md-2 my-2">
-                    <RenderStaffList staff={staff} />
-                </div>
+    const SearchStaff = (props) => {
+        return props.staff.map((staff) => {
+            return(
+            <div key={staff.id} className="col-12 col-md-4 col-lg-2 my-2">
+                <RenderStaffList staff={staff} />
+            </div>
             );
         });
+    }
+    const SearchBar = () => {
+        return (
+            <div className="col-12 col-md-8">
+                <Form>
+                    <FormGroup row className="inputSearch">
+                        <Col>
+                            <Input type="text" id="name" name="name"
+                                value={searchInput}
+                                className="form-control"
+                                placeholder="Nhập tên nhân viên muốn tìm"
+                                onChange = {(e) => setSearchInput(e.target.value)} />
+                        </Col>
+                    </FormGroup>
+                    <Button type="submit" color="primary" onClick={(event) => handleSearch(event)}>Tìm</Button>
+                </Form>
+            </div>
+        )
+    }
+    // render UI staffList
 
-        return(
-            <div className="container">
-                <div className='row'>
-                    
-                    <div className='col-12'>
-                        <h3 className="staff my-2">Nhân viên</h3>
-                        <AddStaff staffs={this.props.staffs} handleAddStaff={this.handleAddStaff}/>
-                        <hr className="my-2"/>
-                    </div>
-                </div>
-                <div className="col-12 col-md-8 my-2">
-                    <Form onSubmit={this.handleSearch}>
-                        <Row className="form-group" >
-                            <Col md={10}>
-                                <Input type="text" name="name" id="name"
-                                    innerRef={input => this.search = input}
-                                    placeholder="Nhập tên nhân viên muốn tìm"
-                                />
-                            </Col>
-                            <Col md={2} >
-                                <Button color="primary" type="submit" >Tìm</Button>
-                            </Col>
-                        </Row>
-                    </Form>
-                </div>
-                <div className="row">
-                    
-                        {staffList}
-                    
-                </div>
-                
+    const staffList = props.staffs.staffs.map((staff) => {
+        return (
+            <div key={staff.id} className="col-12 col-md-4 col-lg-2 my-2">
+                <RenderStaffList staff={staff} />
             </div>
         );
+    });
 
+    if (props.staffs.isLoading) {
+        return(
+            <div className="container">
+                <div className="row">
+                    <Loading />
+                </div>
+            </div>
+        );
     }
-
+    else if (props.staffs.errMess) {
+        return(
+            <div className="container">
+                <div className="row">
+                <h4>{props.staffs.errMess}</h4>
+                </div>
+            </div>
+        );
+    }
+    else {
+        return (
+            <div className="container">
+                <div className="row staff-info">
+                    <div className="col-12 col-md-4">
+                        <h3 className="staff">Nhân Viên</h3>
+                        <AddStaff 
+                            staffs={props.staffs.staffs}
+                            handleAddStaff={props.handleAddStaff} 
+                        />
+                        <hr />
+                    </div>
+                    <SearchBar />
+                </div>
+                <div className="row">
+                {searchStaff ? <SearchStaff staff={searchStaff} /> : staffList}
+                </div>
+            </div>
+        );
+    }
 }
 
 

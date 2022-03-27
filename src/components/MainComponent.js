@@ -15,7 +15,8 @@ import {connect} from 'react-redux';
 const mapStateToProps = state =>{
   return{
     staffs: state.staffs,
-    departments: state.departments
+    departments: state.departments,
+    salary: state.salary
   }
 }
 const mapDispatchToProps = (dispatch) => ({

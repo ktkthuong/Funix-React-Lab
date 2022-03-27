@@ -1,6 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 import {baseUrl} from '../shared/baseUrl';
-import { STAFFS } from '../shared/staffs';
+//import { STAFFS } from '../shared/staffs';
 
 export const addStaff = (newStaff) => ({
     type: ActionTypes.ADD_NEW_STAFF,
@@ -18,7 +18,7 @@ export const fetchStaffs = () => (dispatch) => {
                 return response;
             }
             else {
-                var error = new Error(`Error ${response.status} : ${response.statusText}`)
+                var error = new Error(`Error ${response.status} : ${response.statusText}`);
                 error.response = response;
                 throw error;
             }
@@ -27,9 +27,9 @@ export const fetchStaffs = () => (dispatch) => {
             var errMess = new Error(error.message);
             throw errMess;
         })
-        .then(response => response.json)
-        .then(staffs => dispatch(addStaff(staffs)))
-        .then(error => dispatch(staffsFailed(error.message)))
+        .then(response => response.json())
+        .then(staffs => dispatch(addStaffs(staffs)))
+        .catch(error => dispatch(staffsFailed(error.message)))
 }
 export const staffsLoading=()=>({
     type: ActionTypes.STAFFS_LOADING
@@ -89,7 +89,7 @@ export const addDepartments = (departments) => ({
 
 export const fetchSalary=()=>(dispatch)=>{
     dispatch(salaryLoading(true));
-    return fetch(baseUrl + 'salary')
+    return fetch(baseUrl + 'staffsSalary')
         .then(response => {
             if(response.ok) {
                 return response;
@@ -101,12 +101,12 @@ export const fetchSalary=()=>(dispatch)=>{
             }
         }, 
         error => {
-            var errMess = new Error(error.message);
+            var errMess = new Error(error.message)
             throw errMess;
         })
-        .then(response => response.json)
+        .then(response => response.json())
         .then(salary => dispatch(addSalary(salary)))
-        .then(error => dispatch(salaryFailed(error.message)))
+        .then(error => dispatch(salaryFailed(error.message)));
 }
 
 export const salaryLoading = () => ({
