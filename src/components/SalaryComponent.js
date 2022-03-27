@@ -11,7 +11,7 @@ const Salary=(props) =>{
         setSortData(e.target.value);
     }
     if(sortData === "idAscending") {
-        props.staffs.sort((a,b) => {
+        props.staffs.staffs.sort((a,b) => {
             return(
                 a.id - b.id
             );
@@ -40,7 +40,7 @@ const Salary=(props) =>{
             );
         });
     }
-    const staffSalary = props.staffs.map((staff) => {
+    const staffSalary = props.staffs.staffs.map((staff) => {
         const salary = parseInt(((staff.salaryScale * basicSalary) + (staff.overTime * overTimeSalary)),10);            
         return (
             <div key={staff.id} className="col-12 col-sm-6 col-md-4 my-2">
