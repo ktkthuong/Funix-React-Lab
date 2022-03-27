@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import { Reducer, initialState} from './reducer';
+// import { Reducer, initialState} from './reducer';
 import { Staffs } from './Staffs';
 import { Departments } from './Departments';
 import { Salary } from './Salary';

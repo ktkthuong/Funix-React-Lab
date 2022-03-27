@@ -47,7 +47,7 @@ export const addStaffs = (staffs) => ({
 
 // add fetchDepartments
 
-const fetchDepartments = () => (dispatch) => {
+export const fetchDepartments = () => (dispatch) => {
 
     dispatch(departmentsLoading(true))
 
@@ -58,15 +58,15 @@ const fetchDepartments = () => (dispatch) => {
             }
             else {
                 var error = new Error(`Error ${response.status} : ${response.statusText}`)
-                error.message = response;
-                throw error
+                error.response = response;
+                throw error;
             }
         },
         error => {
             var errMess = new Error(error.message)
-            throw errMess
+            throw errMess;
         })
-        .then(response => response.json)
+        .then(response => response.json())
         .then(departments => dispatch(addDepartments(departments)))
         .catch(error => dispatch(departmentsFailed(error.message)))
 }
