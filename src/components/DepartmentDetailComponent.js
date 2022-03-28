@@ -10,7 +10,7 @@ function RenderStaffsDept({ staff, department }) {
                 <div className="row my-2">
                     <div className="col-12 col-md-4 col-lg-3">
                         <Card>
-                            <CardImg width="100%" src="/assets/images/user.png" alt={staff.name} />
+                            <CardImg width="100%" src="/assets/images/alberto.png" alt={staff.name} />
                         </Card>
                     </div>
                     <div className="col-12 col-md-8 col-lg-9">
