@@ -7,6 +7,41 @@ export const addStaff = (newStaff) => ({
     payload: newStaff
 }); 
 
+// post Staff
+
+export const postStaff = (staffPost) => (dispatch) => {
+
+    return fetch(baseUrl + 'staffs', {
+        method: 'POST',
+        body: JSON.stringify(staffPost),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'same-origin'
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error(`Error ${response.status} : ${response.statusText}`);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errMess = new Error(error.message);
+        throw errMess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(updateStaffs(response)))
+    .catch(error => {
+        console.log('Post Staff', error.message);
+        alert(`Your staff cant be posted Error:${error.message}`)
+    })
+}
+
+
 //add fetchStaffs
 export const fetchStaffs = () => (dispatch) => {
 
@@ -28,7 +63,7 @@ export const fetchStaffs = () => (dispatch) => {
             throw errMess;
         })
         .then(response => response.json())
-        .then(staffs => dispatch(addStaffs(staffs)))
+        .then(staffs => dispatch(updateStaffs(staffs)))
         .catch(error => dispatch(staffsFailed(error.message)))
 }
 export const staffsLoading=()=>({
@@ -39,8 +74,8 @@ export const staffsFailed = (errMess) => ({
     payload: errMess
 })
 
-export const addStaffs = (staffs) => ({
-    type: ActionTypes.ADD_STAFFS,
+export const updateStaffs = (staffs) => ({
+    type: ActionTypes.UPDATE_STAFFS,
     payload: staffs
 })
 

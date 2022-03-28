@@ -1,14 +1,26 @@
 import React, {Component} from 'react';
 import { Button, Label, Modal, Row, Col, ModalHeader, ModalBody } from 'reactstrap';
-import { DEPARTMENTS } from '../shared/staffs';
-import {Link} from 'react-redux-form';
+// import { DEPARTMENTS } from '../shared/staffs';
+// import {Link} from 'react-redux-form';
 import {Control, LocalForm, Errors} from 'react-redux-form';
+import { postStaff, fetchStaffs } from '../redux/ActionCreators';
+import { connect } from 'react-redux';
 
 const required=(val)=> val&&val.length;
 const maxLength=(len)=>(val)=>!(val)||(val.length<=len);
 const minLength=(len) => (val) => (val) && (val.length >=len);
 const isNumber= (val) => !isNaN(Number(val));
 
+
+
+const mapStateToProps = (state) => ({
+
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    postStaff: (staffPost) => dispatch(postStaff(staffPost)),
+    fetchStaffs: () => dispatch(fetchStaffs())
+})
 
 class AddStaff extends Component{
     constructor(props){
@@ -60,24 +72,29 @@ class AddStaff extends Component{
     //     console.log('Current state is: '+ JSON.stringify(values));
     //     alert('Current state is: '+ JSON.stringify(values));
     // }
-
+    
     handleAddStaff(values){
         // e.preventDefault();
-        const newStaff={
+        const salary = parseInt(((values.salaryScale * 3000000) + (values.overTime * 200000)),10);
+        const postStaff={
             id: this.props.staffs.length,
             name: values.name,
             doB: values.doB,
             salaryScale: +values.salaryScale,
             startDate: values.startDate,
-            department: DEPARTMENTS.find(department => department.id === values.department),
+            // department: DEPARTMENTS.find(department => department.id === values.department),
+            departmentId:values.department,
             annualLeave:+values.annualLeave,
             overTime: +values.overTime,
+            salary: salary,
             image: this.state.image
             
         }
         this.toggleModal();
-        this.props.handleAddStaff(newStaff);
-        localStorage.setItem('store',JSON.stringify(newStaff));
+        this.props.postStaff(postStaff);
+        this.props.fetchStaffs();
+        // localStorage.setItem('store',JSON.stringify(newStaff));
+
     }
     // handleBlur=(field) => ()=>{
     //     this.setState({
@@ -338,4 +355,4 @@ class AddStaff extends Component{
 
     }
 }
-export default AddStaff;
+export default connect(mapStateToProps, mapDispatchToProps)(AddStaff);

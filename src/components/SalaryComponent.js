@@ -18,14 +18,14 @@ const Salary=(props) =>{
         });
     }
     if(sortData === "idDescending") {
-        props.staffs.sort((a,b) => {
+        props.staffs.staffs.sort((a,b) => {
             return(
                 b.id - a.id
             );
         });
     }
     if(sortData === "salaryAscending") {
-        props.staffs.sort((a,b) => {
+        props.staffs.staffs.sort((a,b) => {
             return(
                 (a.salaryScale * basicSalary + a.overTime * overTimeSalary) -
                 (b.salaryScale * basicSalary + b.overTime * overTimeSalary)
@@ -33,7 +33,7 @@ const Salary=(props) =>{
         });
     }
     if(sortData === "salaryDescending") {
-        props.staffs.sort((a,b) => {
+        props.staffs.staffs.sort((a,b) => {
             return(
                 (b.salaryScale * basicSalary + b.overTime * overTimeSalary) -
                 (a.salaryScale * basicSalary + a.overTime * overTimeSalary)
