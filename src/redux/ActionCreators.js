@@ -106,7 +106,7 @@ export const fetchSalary=()=>(dispatch)=>{
         })
         .then(response => response.json())
         .then(salary => dispatch(addSalary(salary)))
-        .then(error => dispatch(salaryFailed(error.message)));
+        .catch(error => dispatch(salaryFailed(error.message)));
 }
 
 export const salaryLoading = () => ({
