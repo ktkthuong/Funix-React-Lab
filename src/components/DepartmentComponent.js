@@ -1,5 +1,5 @@
 import React from "react";
-import {Card, CardText, CardBody} from 'reactstrap';
+import {Card, CardText, CardBody, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import {Loading} from './LoadingComponent';
 import {Link} from 'react-router-dom';
 
@@ -33,7 +33,7 @@ const Department = (props) => {
     //         </div>
     //     </div>
     // )
-    if(props.department.isLoading){
+    if(props.departments.isLoading){
         return(
             <div className="container">
                 <div className="row">
@@ -42,7 +42,7 @@ const Department = (props) => {
             </div>
         );
     }
-    else if(props.department.errMess){
+    else if(props.departments.errMess){
         return(
             <div className="container">
                 <div className="row">
