@@ -76,7 +76,7 @@ class AddStaff extends Component{
     handleAddStaff(values){
         // e.preventDefault();
         const salary = parseInt(((values.salaryScale * 3000000) + (values.overTime * 200000)),10);
-        const postStaff={
+        const staffPost={
             id: this.props.staffs.length,
             name: values.name,
             doB: values.doB,
@@ -91,7 +91,7 @@ class AddStaff extends Component{
             
         }
         this.toggleModal();
-        this.props.postStaff(postStaff);
+        this.props.postStaff(staffPost);
         this.props.fetchStaffs();
         // localStorage.setItem('store',JSON.stringify(newStaff));
 
