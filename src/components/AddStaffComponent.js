@@ -6,6 +6,7 @@ import {Control, LocalForm, Errors} from 'react-redux-form';
 import { postStaff, fetchStaffs } from '../redux/ActionCreators';
 import { connect } from 'react-redux';
 
+
 const required=(val)=> val&&val.length;
 const maxLength=(len)=>(val)=>!(val)||(val.length<=len);
 const minLength=(len) => (val) => (val) && (val.length >=len);
@@ -147,7 +148,9 @@ class AddStaff extends Component{
     render(){
         // const errors=this.validate(this.state.name, this.state.doB, this.state.startDate, this.state.department, this.state.salaryScale, this.state.annualLeave, this.state.overTime);
         return(
+            
             <React.Fragment>
+                
                 <Button onClick={this.toggleModal} color='info' className="addButton">
                     <span className='fa fa-plus'></span>
                 </Button>
@@ -350,7 +353,9 @@ class AddStaff extends Component{
                     </ModalBody>
 
                 </Modal>
+            
             </React.Fragment>
+            
         )
 
     }

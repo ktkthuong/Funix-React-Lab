@@ -6,20 +6,26 @@ import { Link } from 'react-router-dom';
 import AddStaff from './AddStaffComponent';
 //import {baseUrl} from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
+import {FadeTransform, Fade, Stagger} from 'react-animation-components';
 
 function RenderStaffList({staff}){
     console.log(staff)
     return(
-        <Card>
-           <Link to={`/staff/${staff.id}`} >      
-            <CardImg width="100%" src="assets/images/alberto.png" alt={staff.name} />
-                    
-            <div className="text-center mt-2">
-                <CardTitle>{staff.name}</CardTitle>
+        <FadeTransform in
+            transformProps={{
+                exitTransform: 'scale(0.5) translateY(50%)'
+            }}>
+            <Card>
+            <Link to={`/staff/${staff.id}`} >      
+                <CardImg width="100%" src="assets/images/alberto.png" alt={staff.name} />
                         
-            </div>
-            </Link>    
-        </Card>
+                <div className="text-center mt-2">
+                    <CardTitle>{staff.name}</CardTitle>
+                            
+                </div>
+                </Link>    
+            </Card>
+        </FadeTransform>
     );
 }
 
