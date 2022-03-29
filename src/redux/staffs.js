@@ -9,7 +9,7 @@ export const Staffs =(state={
         case ActionTypes.ADD_NEW_STAFF:
             return{staffs: [...state.staffs, action.payload]}
 
-        case ActionTypes.ADD_STAFFS:
+        case ActionTypes.UPDATE_STAFFS:
             return {...state, isLoading:false, errMess:null, staffs: action.payload}
             
         case ActionTypes.STAFFS_LOADING:
